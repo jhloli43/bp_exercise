@@ -13,6 +13,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import com.cuenta_movimientos_service.exceptions.CannotDuplicateEntityException;
@@ -71,5 +72,12 @@ public class GlobalExceptionHandler {
     String message = ex.getMessage();
 
     return ResponseEntity.status(statusCode).body(message);
+  }
+
+  @ExceptionHandler(ResourceAccessException.class)
+  public ResponseEntity<String> handleResourceAccess(ResourceAccessException ex) {
+    String message = "No se pudo acceder a la API externa. Por favor, asegúrese que esté activa.";
+
+    return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(message);
   }
 }
