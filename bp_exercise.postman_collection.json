@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "82d0fd0f-87da-48cd-b9b5-acdc0b0c4ce4",
+		"name": "bp_exercise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18514298"
+	},
+	"item": [
+		{
+			"name": "cliente_persona_services",
+			"item": [
+				{
+					"name": "cliente",
+					"item": [
+						{
+							"name": "listar todos los clientes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CLIENTE}}/clientes",
+									"host": [
+										"{{URL_CLIENTE}}"
+									],
+									"path": [
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "crear cliente",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Henry Loli\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 26,\r\n    \"identificacion\": \"08417942\",\r\n    \"direccion\": \"Calle A\",\r\n    \"telefono\": \"+51951639392\",\r\n    \"clienteId\": \"jhloli\",\r\n    \"contraseña\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CLIENTE}}/clientes",
+									"host": [
+										"{{URL_CLIENTE}}"
+									],
+									"path": [
+										"clientes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar cliente",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CLIENTE}}/clientes/:id",
+									"host": [
+										"{{URL_CLIENTE}}"
+									],
+									"path": [
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "83b3131f-6dc5-4995-8ad0-424f672b322c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "actualizar cliente",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Jhonatan Loli\",\r\n    \"genero\": \"M\",\r\n    \"edad\": 26,\r\n    \"identificacion\": \"74547132\",\r\n    \"direccion\": \"Calle A\",\r\n    \"telefono\": \"+51951639392\",\r\n    \"clienteId\": \"jhloli\",\r\n    \"contraseña\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CLIENTE}}/clientes/:id",
+									"host": [
+										"{{URL_CLIENTE}}"
+									],
+									"path": [
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "442b3d91-5d28-4737-9aff-61c7a83be06c"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtener cliente por ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CLIENTE}}/clientes/:id",
+									"host": [
+										"{{URL_CLIENTE}}"
+									],
+									"path": [
+										"clientes",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "85460dc6-f2dd-4134-911d-b5d9410d4d86"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "cuenta_movimiento_services",
+			"item": [
+				{
+					"name": "cuenta",
+					"item": [
+						{
+							"name": "crear cuenta",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"478758\",\r\n    \"clienteId\": \"85460dc6-f2dd-4134-911d-b5d9410d4d86\",\r\n    \"tipoCuenta\": \"A\",\r\n    \"saldoInicial\": 2000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CUENTA}}/cuentas",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar todas las cuentas",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CUENTA}}/cuentas",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"cuentas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminar una cuenta por número de cuenta",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CUENTA}}/cuentas/:numeroCuenta",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"cuentas",
+										":numeroCuenta"
+									],
+									"variable": [
+										{
+											"key": "numeroCuenta",
+											"value": "478758"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "listar cuentas por clienteId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CUENTA}}/cuentas/cliente/:clienteId",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"cuentas",
+										"cliente",
+										":clienteId"
+									],
+									"variable": [
+										{
+											"key": "clienteId",
+											"value": "85460dc6-f2dd-4134-911d-b5d9410d4d86"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "movimientos",
+					"item": [
+						{
+							"name": "registrar movimiento",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numeroCuenta\": \"985487\",\r\n    \"valor\": 550\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_CUENTA}}/movimientos",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"movimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtener reporte de movimientos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{URL_CUENTA}}/reportes?clienteId=83b3131f-6dc5-4995-8ad0-424f672b322c&fecha1=2023-10-26&fecha2=2023-10-27",
+									"host": [
+										"{{URL_CUENTA}}"
+									],
+									"path": [
+										"reportes"
+									],
+									"query": [
+										{
+											"key": "clienteId",
+											"value": "83b3131f-6dc5-4995-8ad0-424f672b322c"
+										},
+										{
+											"key": "fecha1",
+											"value": "2023-10-26"
+										},
+										{
+											"key": "fecha2",
+											"value": "2023-10-27"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL_CLIENTE",
+			"value": "http://localhost:8080",
+			"type": "string"
+		},
+		{
+			"key": "URL_CUENTA",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
