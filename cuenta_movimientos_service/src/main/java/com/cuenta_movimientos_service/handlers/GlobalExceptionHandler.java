@@ -16,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import com.cuenta_movimientos_service.exceptions.BadDatesException;
 import com.cuenta_movimientos_service.exceptions.CannotDuplicateEntityException;
 import com.cuenta_movimientos_service.exceptions.CannotSetNegativeValueException;
 import com.cuenta_movimientos_service.exceptions.EntityNotFoundException;
@@ -68,6 +69,14 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(HttpClientErrorException.class)
   public ResponseEntity<String> handleHttpClientError(HttpClientErrorException ex) {
+    int statusCode = ex.getStatusCode().value();
+    String message = ex.getMessage();
+
+    return ResponseEntity.status(statusCode).body(message);
+  }
+
+  @ExceptionHandler(BadDatesException.class)
+  public ResponseEntity<String> handleBadDates(BadDatesException ex) {
     int statusCode = ex.getStatusCode().value();
     String message = ex.getMessage();
 

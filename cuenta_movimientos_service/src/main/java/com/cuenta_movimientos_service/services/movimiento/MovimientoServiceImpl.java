@@ -15,6 +15,7 @@ import com.cuenta_movimientos_service.entity.Cuenta;
 import com.cuenta_movimientos_service.entity.Movimiento;
 import com.cuenta_movimientos_service.enums.TipoCuenta;
 import com.cuenta_movimientos_service.enums.TipoMovimiento;
+import com.cuenta_movimientos_service.exceptions.BadDatesException;
 import com.cuenta_movimientos_service.exceptions.CannotSetNegativeValueException;
 import com.cuenta_movimientos_service.exceptions.EntityNotFoundException;
 import com.cuenta_movimientos_service.repository.CuentaRepository;
@@ -69,6 +70,10 @@ public class MovimientoServiceImpl implements MovimientoService {
   @Override
   public List<MovimientoReportDTO> getReport(String clienteId, Date fecha1, Date fecha2) {
     log.info("Report for " + clienteId + " between dates " + fecha1 + " and " + fecha2);
+
+    if (fecha1.after(fecha2)) {
+      throw new BadDatesException("La fecha1 no puede ser mayor a la fecha2");
+    }
     
     String url = this.clienteURL + "/clientes/{id}";
     RestTemplate restTemplate = new RestTemplate();
